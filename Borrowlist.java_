@@ -1,0 +1,94 @@
+import java.io.*;
+import java.util.*;
+class Borrowlist
+{
+     private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+     public static void display()throws IOException
+     {
+          BufferedReader brf=new BufferedReader(new FileReader("Borrowlist.txt"));
+          Make.line();
+          System.out.println("");//alignment
+          Make.line();
+          String rec="";
+          int c=0;
+          Make.line();
+          System.out.println(Make.tab()+"BORROWED BOOKS");
+          Make.line();
+          System.out.println("SL.NO\tISBN       \tNAME                                              \tPUBLISHER                \tAUTHOR                   \t PRICE  \tGENRE");
+          Make.line();
+          while((rec=brf.readLine())!=null)
+               printRec(rec,++c);
+          brf.close();
+          System.out.println("Press Enter to continue ...");
+          br.readLine();
+     }
+
+     public static void ret()throws IOException
+     {
+          BufferedReader brf=new BufferedReader(new FileReader("Borrowlist.txt"));
+          Make.line();
+          System.out.println("");//alignment
+          Make.line();
+          String rec="";
+          int c=0;
+          Make.line();
+          System.out.println(Make.tab()+"BORROWED BOOKS");
+          Make.line();
+          System.out.println("SL.NO\tISBN       \tNAME                                              \tPUBLISHER                \tAUTHOR                   \t PRICE  \tGENRE");
+          Make.line();
+          while((rec=brf.readLine())!=null)
+               printRec(rec,++c);
+          brf.close();
+          System.out.println("Enter the book which you wish to remove ...(sl.no)");
+          int sl=Integer.parseInt(br.readLine());
+          if(sl<1 || sl>c)
+          {
+               Make.error();
+               return;//time loop
+          }
+          remove(sl-1,c);
+     }
+
+     public static void remove(int choice,int lim)throws IOException
+     {
+          int i;
+          StringTokenizer st=new StringTokenizer("");
+          String n[]=new String[lim];
+          BufferedReader brf=new BufferedReader(new FileReader("BorrowList.txt"));
+          for(i=0;i<lim;i++)        
+               n[i]=brf.readLine();
+          brf.close();
+          String rec=n[choice];
+          String gen=rec.substring(rec.lastIndexOf("#")+1);
+          String data=rec.substring(0,rec.lastIndexOf("#"));
+          Booklist.append(data,gen);
+          PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter("BorrowList.txt")));
+          for(i=0;i<lim;i++)
+          {
+               if(i==choice)
+                    continue;
+               else
+                    pw.println(n[i]);
+          }
+          pw.close();
+     }
+
+     public static void printRec(String rec,int i)
+     {
+          StringTokenizer st=new StringTokenizer(rec,"#");
+          long isbn=Long.parseLong(st.nextToken());
+          String nb=st.nextToken();
+          String pb=st.nextToken();
+          String ab=st.nextToken();
+          int price=Integer.parseInt(st.nextToken());  //check with Between word spacing
+          String gen=st.nextToken();
+          System.out.println(i+".   \t"+isbn+"\t"+nb+"\t"+pb+"\t"+ab+"\t"+price+"  \t"+gen);
+     }
+
+     public static void add(String rec)throws IOException
+     {
+          PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter("Borrowlist.txt",true)));
+          pw.println(rec);
+          pw.close();
+     }
+}

@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Doctorlist
+comment1.params=
+comment1.target=void\ display()
+comment2.params=s\ i
+comment2.target=void\ printRec(java.lang.String,\ int)
+comment3.params=
+comment3.target=void\ add()
+comment4.params=rec\ f
+comment4.target=void\ append(java.lang.String,\ java.lang.String)
+comment5.params=
+comment5.target=void\ remove()
+comment6.params=f\ choice\ c
+comment6.target=void\ delete(java.lang.String,\ int,\ int)
+comment7.params=
+comment7.target=void\ issue()
+comment8.params=
+comment8.target=void\ search()
+comment9.params=
+comment9.target=void\ dispSpec()
+numComments=10

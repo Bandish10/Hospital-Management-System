@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Admin
+comment1.params=
+comment1.target=void\ main()
+comment2.params=
+comment2.target=void\ addRecep()
+comment3.params=
+comment3.target=void\ remRecep()
+comment4.params=
+comment4.target=void\ dispRecep()
+comment5.params=s\ i
+comment5.target=void\ printRec(java.lang.String,\ int)
+comment6.params=
+comment6.target=boolean\ login()
+comment7.params=
+comment7.target=void\ dispMenu()
+numComments=8

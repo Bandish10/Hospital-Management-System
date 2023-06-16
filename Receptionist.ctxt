@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Receptionist
+comment1.params=
+comment1.target=void\ main()
+comment2.params=
+comment2.target=boolean\ login()
+comment3.params=
+comment3.target=void\ dispMenu()
+numComments=4

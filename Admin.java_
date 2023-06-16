@@ -1,0 +1,188 @@
+import java.util.*;
+import java.io.*;
+class Admin
+{
+     private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+     private static String na="thecelestialguy",pa="02032002";
+     public static void main()throws IOException
+     {
+          int i,j,k;
+          if(login()==false)
+               return;
+          while(true)
+          {
+               dispMenu();
+               System.out.println(Make.tab()+"Enter your choice ...");
+               switch(Integer.parseInt(br.readLine()))
+               {
+                    case 1:
+                    addLib();
+                    break;
+                    case 2:
+                    remLib();
+                    break;
+                    case 3:
+                    dispLib();
+                    break;
+                    case 4:
+                    Booklist.display();
+                    break;
+                    case 5:
+                    Borrowlist.display();
+                    break;
+                    case 6:
+                    Make.wish();
+                    return;
+                    default:
+                    Make.error();
+                    Make.time();
+               }
+          }
+     }
+
+     public static void addLib()throws IOException
+     {
+          int i;
+          System.out.println('\u000C');
+          Make.line();
+          System.out.println(Make.tab()+"Add Librarian");
+          Make.line();
+          System.out.println("Enter the name of the Librarian ...");
+          String nl=br.readLine();
+          nl=Make.align(nl,30);
+          System.out.println("Enter Unique Id ...(7 digits)");
+          String ul=br.readLine();
+          ul=Make.align(ul,10);
+          System.out.println("Enter password ...(Maximum 15 characters)");
+          String pl=br.readLine();
+          PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter("Librarian.txt",true)));
+          pw.println(nl+"#"+ul+"#"+pl);
+          pw.close();
+          System.out.println("\n\n");
+          Make.line();
+          System.out.println("Librarian Succesfully Added !!!");
+          Make.line();
+          System.out.println("\n\n\n\n\n");
+          System.out.println("Press Enter key to continue - ");
+          br.readLine();
+     }
+
+     public static void remLib()throws IOException
+     {
+          System.out.println('\u000C');
+          Make.line();
+          System.out.println(Make.tab()+"Remove Librarian ");
+          Make.line();
+          StringTokenizer st=new StringTokenizer("");
+          BufferedReader br1=new BufferedReader(new FileReader("Librarian.txt"));
+          int c=0,choice=0,i;
+          while(br1.readLine()!=null)
+               ++c;
+          br1.close();
+          String n[]=new String[c];
+          String record="";
+          Make.line();
+          System.out.println(Make.tab()+"LIST OF LIBRARIANS");
+          Make.line();
+          System.out.println("Sl.No\tNAME                          \tUNIQUE ID \t PASSWORD");
+          Make.line();
+          BufferedReader brf=new BufferedReader(new FileReader("Librarian.txt"));
+          for(i=0;i<c;i++)        
+          {
+               n[i]=brf.readLine();
+               printRec(n[i],i);
+          }
+          Make.line();
+          System.out.println("\n\n\n\n\n");
+          brf.close();
+          do
+          {
+               System.out.println("Enter Sl.no u want to delete ...");
+               choice=Integer.parseInt(br.readLine());
+               if(choice<1 || choice>c)
+                    System.out.println("Invalid Serial No.\n\n");
+          }while(choice<1 || choice>c);
+          choice--;
+          PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter("Librarian.txt")));
+          for(i=0;i<c;i++)
+          {
+               if(i==choice)
+                    continue;
+               else
+                    pw.println(n[i]);
+          }
+          pw.close();
+          System.out.println("\n\n");
+          Make.line();
+          System.out.println(Make.tab()+"Librarian Succesfully Removed !!!");
+     }
+
+     public static void dispLib()throws IOException
+     {
+          System.out.println('\u000C');
+          StringTokenizer st=new StringTokenizer("");
+          BufferedReader brf=new BufferedReader(new FileReader("Librarian.txt"));
+          String record="";
+          Make.line();
+          System.out.println(Make.tab()+"LIST OF LIBRARIANS");
+          Make.line();
+          System.out.println("Sl.No\tNAME                          \tUNIQUE ID \t PASSWORD");
+          Make.line();
+          int c=0;
+          while((record=brf.readLine())!=null)
+               printRec(record,c);
+          Make.line();
+          System.out.println("\n\n\n\n\n");
+          brf.close();
+          System.out.println("Press Enter key to go back ...");
+          br.readLine();
+     }
+
+     private static void printRec(String s,int i)
+     {
+          StringTokenizer st=new StringTokenizer(s,"#");
+          String nl=st.nextToken();
+          String ul=st.nextToken();
+          String pl=st.nextToken();
+          System.out.println((i+1)+".   \t"+nl+"\t"+ul+"\t"+pl);
+     }
+
+     private static boolean login()throws IOException
+     {
+          System.out.println('\u000C');
+          Make.line();
+          System.out.println(Make.tab()+"\t\tADMIN LOGIN");
+          Make.line();
+          System.out.println("Enter username ...");
+          String a=br.readLine();
+          System.out.println("Enter password ...");
+          String b=br.readLine();
+          if(a.equals(na)==false || b.equals(pa)==false)
+          {
+               Make.line()l
+               System.out.println(Make.tab()+"INVALID USERNAME OR PASSOWORD");
+               Make.line();
+               Make.time();
+               return false;
+          }
+          else
+               return true;
+     }
+
+     private static void dispMenu()
+     {
+          System.out.println('\u000C');
+          Make.line();
+          System.out.println("WELCOME PAWAN TIRTHANI !!!");
+          Make.line();
+          System.out.println(Make.tab()+"\t\tMENU");
+          Make.line();
+          System.out.println(Make.tab()+"1   -    Add Librarian");
+          System.out.println(Make.tab()+"2   -    Remove Librarian");
+          System.out.println(Make.tab()+"3   -    Display Librarian List");
+          System.out.println(Make.tab()+"4   -    Display Booklist");
+          System.out.println(Make.tab()+"5   -    Display Borrowlist");
+          System.out.println(Make.tab()+"6   -    LOGOUT");
+          Make.line();
+     }
+}

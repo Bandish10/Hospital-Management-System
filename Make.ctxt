@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Make
+comment1.params=
+comment1.target=void\ line()
+comment2.params=
+comment2.target=void\ wish()
+comment3.params=
+comment3.target=void\ error()
+comment4.params=s\ n
+comment4.target=java.lang.String\ align(java.lang.String,\ int)
+comment5.params=
+comment5.target=void\ time()
+comment6.params=rec
+comment6.target=void\ bill(java.lang.String)
+comment7.params=rec
+comment7.target=void\ reciept(java.lang.String)
+numComments=8

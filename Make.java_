@@ -1,0 +1,110 @@
+import java.io.*;
+import java.util.*;
+class Make
+{
+    private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+    public static void line()
+    {
+        for(int i=0;i<120;i++)
+            System.out.print("=");
+        System.out.println("");
+    }
+
+    public static void wish()
+    {
+        System.out.println('\u000C');
+        line();
+        System.out.println(tab()+"HAVE A GOOD DAY !!");
+        line();
+        time();
+    }
+
+    public static String tab()
+    {
+        return "\t\t\t\t\t\t";
+    }
+
+    public static void error()
+    {
+        System.out.println('\u000C');
+        line();
+        System.out.println(tab()+"INVALID CHOICE !!");
+        line();
+        time();
+    }
+
+    public static String align(String s,int n)
+    {
+        String t=s;
+        for(int i=t.length();i<n;i++)
+            t+=" ";
+        return t;
+    }
+
+    public static void time()
+    {
+        for(long i=-999999999l;i<9999999l;i++)
+        {
+        }
+    }
+
+    public static void bill(String rec)throws IOException
+    {
+        System.out.println('\u000C');
+        System.out.println("Enter name of the customer  ... ");
+        String nc=br.readLine();
+        String Billno=String.valueOf((long)(Math.random()*10000000000l)+1);
+        StringTokenizer st=new StringTokenizer(rec,"#");
+        String isbn=st.nextToken();
+        String nb=st.nextToken();
+        String np=st.nextToken();
+        String ab=st.nextToken();
+        String price=st.nextToken();
+        line();
+        System.out.println(Make.tab()+"BILL");
+        line();
+        System.out.println("BILL.No - "+Billno+Make.tab()+" Customer Name - "+nc+"\n");
+        line();
+        System.out.println("Date of Purchase - ");
+        System.out.println("ISBN -  "+isbn);
+        System.out.println("Name of the book - "+nb);
+        System.out.println("Publisher - "+np);
+        System.out.println("Author -  "+ab);
+        System.out.println("");
+        System.out.println("Net Total - "+price);
+        line();
+        time();
+        System.out.println("Press Enter to continue  ...");
+        br.readLine();
+    }
+
+    public static void reciept(String rec)throws IOException
+    {
+        System.out.println('\u000C');
+        System.out.println("Enter name of the customer  ... ");
+        String nc=br.readLine();
+        String Billno=String.valueOf((long)(Math.random()*10000000000l)+1);
+        StringTokenizer st=new StringTokenizer(rec,"#");
+        String isbn=st.nextToken();
+        String nb=st.nextToken();
+        String np=st.nextToken();
+        String ab=st.nextToken();
+        String price=st.nextToken();
+        line();
+        System.out.println(Make.tab()+"ISSUE RECIEPT");
+        line();
+        System.out.println("BILL.No - "+Billno+Make.tab()+" Customer Name - "+nc+"\n");
+        line();
+        System.out.println("Date of Borrow - ");
+        System.out.println("ISBN -  "+isbn);
+        System.out.println("Name of the book - "+nb);
+        System.out.println("Publisher - "+np);
+        System.out.println("Author -  "+ab);
+        System.out.println("");
+        System.out.println("Date of return ");
+        line();
+        time();
+        System.out.println("Press Enter to continue  ...");
+        br.readLine();
+    }
+}   
